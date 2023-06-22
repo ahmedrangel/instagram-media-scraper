@@ -40,7 +40,6 @@ if (!idUrl) {
       const script = body(el).html();
       if (script.includes(`"items"`)) {
           scripts.push(script);
-
       }
   });
 
