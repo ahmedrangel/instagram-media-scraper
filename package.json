@@ -1,0 +1,7 @@
+{
+	"type": "module",
+	"dependencies": {
+		"cheerio": "1.0.0-rc.12",
+		"jsonpath": "^1.1.1"
+	}
+}
