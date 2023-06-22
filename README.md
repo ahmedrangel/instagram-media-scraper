@@ -15,8 +15,16 @@ You can get **information**, **image versions**, **video versions** and **carous
     6. Copy your **Cookie** code.
     7. Copy your **User-Agent** code.
     8. Copy your **X-Ig-App-Id** code.
+
+![scraper](https://github.com/ahmedrangel/instagram-media-scraper/assets/50090595/4cc339ea-a314-4696-8fc2-eaa756d4018e)
+
 > Don't share your cookie code with anyone!
 - If you get these syntax error mark just put a forward slash after all the back slashes.
+
+![image](https://github.com/ahmedrangel/instagram-media-scraper/assets/50090595/a42bf426-8c89-4099-81e2-1017a1a3e7d8)
+
+![image](https://github.com/ahmedrangel/instagram-media-scraper/assets/50090595/830b1647-31da-41d0-b93a-052590982f0d)
+
 ## Example
 ```js
 import * as cheerio from "cheerio";
@@ -101,100 +109,100 @@ if (!idUrl) {
 }
 ```
 ## JSON output
-```js
+```json
 {
-  code: 'CtjoC2BNsB2',
-  created_at: 1686930107,
-  username: 'fatfatpankocat',
-  full_name: 'Panko A. Cat',
-  profile_picture: 'https://scontent.cdninstagram.com/v/t51.2885-19/351028002_1390928218140357_6492853570855484928_n.jpg?.............',
-  is_verified: false,
-  is_paid_partnership: false,
-  product_type: 'clips',
-  caption: 'Processing speeds are at an all time low',
-  like_count: 50799,
-  comment_count: 112,
-  view_count: null,
-  location: null,
-  height: 1024,
-  width: 576,
-  image_versions: [
+  "code": "CtjoC2BNsB2",
+  "created_at": 1686930107,
+  "username": "fatfatpankocat",
+  "full_name": "Panko A. Cat",
+  "profile_picture": "https://scontent.cdninstagram.com/v/t51.2885-19/351028002_1390928218140357_6492853570855484928_n.jpg?.............",
+  "is_verified": false,
+  "is_paid_partnership": false,
+  "product_type": "clips",
+  "caption": "Processing speeds are at an all time low",
+  "like_count": 50799,
+  "comment_count": 112,
+  "view_count": null,
+  "location": null,
+  "height": 1024,
+  "width": 576,
+  "image_versions": [
     {
-      url: 'https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............',
-      height: 1024,
-      width: 576
+      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
+      "height": 1024,
+      "width": 576
     },
     {
-      url: 'https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............',
-      height: 853,
-      width: 480
+      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
+      "height": 853,
+      "width": 480
     },
     {
-      url: 'https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............',
-      height: 569,
-      width: 320
+      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
+      "height": 569,
+      "width": 320
     },
     {
-      url: 'https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............',
-      height: 427,
-      width: 240
+      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
+      "height": 427,
+      "width": 240
     },
     {
-      url: 'https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............',
-      height: 1080,
-      width: 1080
+      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
+      "height": 1080,
+      "width": 1080
     },
     {
-      url: 'https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............',
-      height: 750,
-      width: 750
+      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
+      "height": 750,
+      "width": 750
     },
     {
-      url: 'https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............',
-      height: 640,
-      width: 640
+      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
+      "height": 640,
+      "width": 640
     },
     {
-      url: 'https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............',
-      height: 480,
-      width: 480
+      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
+      "height": 480,
+      "width": 480
     },
     {
-      url: 'https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............',
-      height: 320,
-      width: 320
+      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
+      "height": 320,
+      "width": 320
     },
     {
-      url: 'https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............',
-      height: 240,
-      width: 240
+      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
+      "height": 240,
+      "width": 240
     },
     {
-      url: 'https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............',
-      height: 150,
-      width: 150
+      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
+      "height": 150,
+      "width": 150
     }
   ],
-  video_versions: [
+  "video_versions": [
     {
-      width: 576,
-      height: 1024,
-      url: 'https://scontent.cdninstagram.com/o1/v/t16/f1/m82/F5462086DC54DD10E6E0AC3C9902A2A3_video_dashinit.mp4?.............',
-      type: 101
+      "width": 576,
+      "height": 1024,
+      "url": "https://scontent.cdninstagram.com/o1/v/t16/f1/m82/F5462086DC54DD10E6E0AC3C9902A2A3_video_dashinit.mp4?.............",
+      "type": 101
     },
     {
-      width: 432,
-      height: 768,
-      url: 'https://scontent.cdninstagram.com/o1/v/t16/f1/m82/5542D63645ABB4B44E5B31785E6A6181_video_dashinit.mp4?.............',
-      type: 102
+      "width": 432,
+      "height": 768,
+      "url": "https://scontent.cdninstagram.com/o1/v/t16/f1/m82/5542D63645ABB4B44E5B31785E6A6181_video_dashinit.mp4?.............",
+      "type": 102
     },
     {
-      width: 432,
-      height: 768,
-      url: 'https://scontent.cdninstagram.com/o1/v/t16/f1/m82/5542D63645ABB4B44E5B31785E6A6181_video_dashinit.mp4?.............',
-      type: 103
+      "width": 432,
+      "height": 768,
+      "url": "https://scontent.cdninstagram.com/o1/v/t16/f1/m82/5542D63645ABB4B44E5B31785E6A6181_video_dashinit.mp4?.............",
+      "type": 103
     }
   ],
-  carousel_media: null
+  "carousel_media": null
 }
 ```
