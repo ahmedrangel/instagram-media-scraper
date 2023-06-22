@@ -1,11 +1,11 @@
-import * as cheerio from 'cheerio';
+import * as cheerio from "cheerio";
 import jp from "jsonpath";
 
 // Instgram post or reel URL
 const url = "https://www.instagram.com/reel/CtjoC2BNsB2/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA==" // url example
 const _cookie = `fbm_124024...dab7cd8"`;    // required! get your Cookie from your browser
 const _userAgent = "Mozilla/5.0.../537.36"; // required! get your User-Agent from your browser
-const _xIgAppId = '93661974...';            // required! get your X-Ig-App-Id from your browser
+const _xIgAppId = "93661974...";            // required! get your X-Ig-App-Id from your browser
 
 // Function to get instagram post ID from any url string
 const getId = (url) => {
@@ -29,14 +29,14 @@ if (!idUrl) {
       "cookie": _cookie,
       "user-agent": _userAgent,
       "x-ig-app-id": _xIgAppId,
-      ['sec-fetch-site']: 'same-origin'
+      ["sec-fetch-site"]: "same-origin"
     }
   });
 
   const html = await response.text();
   const body = cheerio.load(html);
   const scripts = [];
-  body('script').each((i,el) => {
+  body("script").each((i,el) => {
       const script = body(el).html();
       if (script.includes(`"items"`)) {
           scripts.push(script);
@@ -63,7 +63,7 @@ if (!idUrl) {
     location: items.location,
     height: items.original_height,
     width: items.original_width,
-    images_versions: items.image_versions2 !== null ? items.image_versions2.candidates : null,
+    image_versions: items.image_versions2 !== null ? items.image_versions2.candidates : null,
     video_versions: items.video_versions,
     carousel_media: items.product_type === "carousel_container" ? (() => {
       items.carousel_media.forEach(element => {
