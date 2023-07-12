@@ -14,7 +14,8 @@ You can get **information**, **image versions**, **video versions** and **carous
     5. Scroll down and look for **Request Headers** tab.
     6. Copy your **Cookie** code.
     7. Copy your **User-Agent** code.
-    8. Copy your **X-Ig-App-Id** code.
+       > User-Agent is included in the code, but in case you want to get your own follow this step
+    9. Copy your **X-Ig-App-Id** code.
 
 ![scraper](https://github.com/ahmedrangel/instagram-media-scraper/assets/50090595/4cc339ea-a314-4696-8fc2-eaa756d4018e)
 
