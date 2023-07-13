@@ -100,7 +100,7 @@ if (!idUrl) {
   console.log(json_data);
 }
 ```
-## Stringified JSON output
+## Stringified JSON output example
 ```json
 {
   "code": "CtjoC2BNsB2",
