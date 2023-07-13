@@ -114,8 +114,8 @@ if (!idUrl) {
   "caption": "Processing speeds are at an all time low",
   "like_count": 50799,
   "comment_count": 112,
-  "view_count": null,
-  "location": null,
+  "view_count": undefined,
+  "location": undefined,
   "height": 1024,
   "width": 576,
   "image_versions": [
@@ -195,6 +195,6 @@ if (!idUrl) {
       "type": 103
     }
   ],
-  "carousel_media": null
+  "carousel_media": undefined
 }
 ```
