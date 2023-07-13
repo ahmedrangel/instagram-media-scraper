@@ -72,7 +72,7 @@ if (!idUrl) {
       })
     })
     return carousel_media;
-  })() : carousel_media = null;
+  })() : carousel_media = undefined;
   
   // Create json data
   const json_data = {
@@ -84,14 +84,14 @@ if (!idUrl) {
     is_verified: items.user.is_verified,
     is_paid_partnership: items.is_paid_partnership,
     product_type: items.product_type,
-    caption: items.caption !== null ? items.caption.text : null,
+    caption: items.caption?.text,
     like_count: items.like_count,
     comment_count: items.comment_count,
     view_count: items.view_count,
     location: items.location,
     height: items.original_height,
     width: items.original_width,
-    image_versions: items.image_versions2 !== null ? items.image_versions2.candidates : null,
+    image_versions: items.image_versions2?.candidates,
     video_versions: items.video_versions,
     carousel_media: carousel_media
   }
@@ -100,7 +100,7 @@ if (!idUrl) {
   console.log(json_data);
 }
 ```
-## JSON output
+## Stringified JSON output
 ```json
 {
   "code": "CtjoC2BNsB2",
