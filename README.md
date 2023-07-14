@@ -1,5 +1,5 @@
 # **Instagram Media Scraper Without API (Working July 2023)**
- This is simple Node.js code to get public **information** and **media** (*images*, *videos*, *carousel*) from every instagram post or reel URL without API. Working in 2023.
+ This is simple Node.js (v18.16+) code to get public **information** and **media** (*images*, *videos*, *carousel*) from every instagram post or reel URL without API. Working in 2023.
 
 You can get **information**, **image versions**, **video versions** and **carousel media** with their respective image versions and/or video versions of each of them.
 
@@ -29,10 +29,12 @@ You can get **information**, **image versions**, **video versions** and **carous
 ## Example
 ```js
 // Instgram post or reel URL
-const url = "https://www.instagram.com/reel/CtjoC2BNsB2/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA==" // url example
-const _cookie = `fbm_124024...dab7cd8"`;    // required! get your Cookie from your browser
-const _userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"; // or get your User-Agent from your browser
-const _xIgAppId = "93661974...";            // required! get your X-Ig-App-Id from your browser
+const url = "https://www.instagram.com/reel/CtjoC2BNsB2/?igshid=MzRlODBiNWFlZA==" // url example
+
+// Required headers example
+const _userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"; // Use this one or get your User-Agent from your browser
+const _cookie = `mid=...; ig_did=... datr=...; fbm_...; ds_user_id=...; csrftoken=...; fbsr_=... rur="..."`; // required! get your Cookie from your browser
+const _xIgAppId = "93661974..."; // required! get your X-Ig-App-Id from your browser
 
 // Function to get instagram post ID from any url string
 const getId = (url) => {
@@ -62,38 +64,39 @@ const idUrl = getId(url);
     });
     const json = await response.json();
     const items = json.items[0];
-    let carousel_media = [];
 
-    // Check if post is a carousel post
+    // Check if post is a carousel
+    let carousel_media = [];
     items.product_type === "carousel_container" ? (() => {
       items.carousel_media.forEach(element => {
         carousel_media.push({
-          image_versions: element.image_versions2.candidates,
-          video_versions: element.video_versions
+          image_versions: element.image_versions2.candidates ?? null,
+          video_versions: element.video_versions ?? null
         })
       })
       return carousel_media;
-    })() : carousel_media = undefined;
+    })() : carousel_media = null;
     
     // Create json data
     const json_data = {
-      code: items.code,
-      created_at: items.taken_at,
-      username: items.user.username,
-      full_name: items.user.full_name,
-      profile_picture: items.user.profile_pic_url,
-      is_verified: items.user.is_verified,
-      is_paid_partnership: items.is_paid_partnership,
-      product_type: items.product_type,
-      caption: items.caption?.text,
-      like_count: items.like_count,
-      comment_count: items.comment_count,
-      view_count: items.view_count,
-      location: items.location,
-      height: items.original_height,
-      width: items.original_width,
-      image_versions: items.image_versions2?.candidates,
-      video_versions: items.video_versions,
+      code: items.code ?? null,
+      created_at: items.taken_at ?? null,
+      username: items.user.username ?? null,
+      full_name: items.user.full_name ?? null,
+      profile_picture: items.user.profile_pic_url ?? null,
+      is_verified: items.user.is_verified ?? null,
+      is_paid_partnership: items.is_paid_partnership ?? null,
+      product_type: items.product_type ?? null,
+      caption: items.caption?.text ?? null,
+      like_count: items.like_count ?? null,
+      comment_count: items.comment_count ?? null,
+      view_count: items.view_count !== undefined ? items.view_count : items.play_count ?? null,
+      video_duration: items.video_duration ?? null,
+      location: items.location ?? null,
+      height: items.original_height ?? null,
+      width: items.original_width ?? null,
+      image_versions: items.image_versions2?.candidates ?? null,
+      video_versions: items.video_versions ?? null,
       carousel_media: carousel_media
     }
 
@@ -116,8 +119,9 @@ const idUrl = getId(url);
   "caption": "Processing speeds are at an all time low",
   "like_count": 50799,
   "comment_count": 112,
-  "view_count": "undefined",
-  "location": "undefined",
+  "view_count": 357385,
+  "video_duration": 5.293,
+  "location": null,
   "height": 1024,
   "width": 576,
   "image_versions": [
@@ -197,6 +201,6 @@ const idUrl = getId(url);
       "type": 103
     }
   ],
-  "carousel_media": "undefined"
+  "carousel_media": null
 }
 ```
