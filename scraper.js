@@ -17,55 +17,57 @@ const getId = (url) => {
 
 const idUrl = getId(url);
 
-// Fetch data from instagram post
-if (!idUrl) {
-  console.log('Invalid URL');
-} else {
-  const response = await fetch(`https://www.instagram.com/p/${idUrl}?__a=1&__d=di`, {
-    headers: {
-      "cookie": _cookie,
-      "user-agent": _userAgent,
-      "x-ig-app-id": _xIgAppId,
-      ["sec-fetch-site"]: "same-origin"
-    }
-  });
-  const json = await response.json();
-  const items = json.items[0];
-  let carousel_media = [];
+(async() => {
+  // Fetch data from instagram post
+  if (!idUrl) {
+    console.log('Invalid URL');
+  } else {
+    const response = await fetch(`https://www.instagram.com/p/${idUrl}?__a=1&__d=di`, {
+      headers: {
+        "cookie": _cookie,
+        "user-agent": _userAgent,
+        "x-ig-app-id": _xIgAppId,
+        ["sec-fetch-site"]: "same-origin"
+      }
+    });
+    const json = await response.json();
+    const items = json.items[0];
+    let carousel_media = [];
 
-  // Check if post is a carousel post
-  items.product_type === "carousel_container" ? (() => {
-    items.carousel_media.forEach(element => {
-      carousel_media.push({
-        image_versions: element.image_versions2.candidates,
-        video_versions: element.video_versions
+    // Check if post is a carousel post
+    items.product_type === "carousel_container" ? (() => {
+      items.carousel_media.forEach(element => {
+        carousel_media.push({
+          image_versions: element.image_versions2.candidates,
+          video_versions: element.video_versions
+        })
       })
-    })
-    return carousel_media;
-  })() : carousel_media = undefined;
-  
-  // Create json data
-  const json_data = {
-    code: items.code,
-    created_at: items.taken_at,
-    username: items.user.username,
-    full_name: items.user.full_name,
-    profile_picture: items.user.profile_pic_url,
-    is_verified: items.user.is_verified,
-    is_paid_partnership: items.is_paid_partnership,
-    product_type: items.product_type,
-    caption: items.caption?.text,
-    like_count: items.like_count,
-    comment_count: items.comment_count,
-    view_count: items.view_count,
-    location: items.location,
-    height: items.original_height,
-    width: items.original_width,
-    image_versions: items.image_versions2?.candidates,
-    video_versions: items.video_versions,
-    carousel_media: carousel_media
-  }
+      return carousel_media;
+    })() : carousel_media = undefined;
+    
+    // Create json data
+    const json_data = {
+      code: items.code,
+      created_at: items.taken_at,
+      username: items.user.username,
+      full_name: items.user.full_name,
+      profile_picture: items.user.profile_pic_url,
+      is_verified: items.user.is_verified,
+      is_paid_partnership: items.is_paid_partnership,
+      product_type: items.product_type,
+      caption: items.caption?.text,
+      like_count: items.like_count,
+      comment_count: items.comment_count,
+      view_count: items.view_count,
+      location: items.location,
+      height: items.original_height,
+      width: items.original_width,
+      image_versions: items.image_versions2?.candidates,
+      video_versions: items.video_versions,
+      carousel_media: carousel_media
+    }
 
-  // Print json data
-  console.log(json_data);
-}
+    // Print json data
+    console.log(json_data); 
+  }
+})();
