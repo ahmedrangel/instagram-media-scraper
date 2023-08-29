@@ -12,10 +12,9 @@ const getId = (url) => {
   const result = regex.exec(url);
   if (result && result.length > 1) {
     return result[1];
-  } else {
-    return null;
   }
-}
+  return null;
+};
 
 const idUrl = getId(url);
 
@@ -68,7 +67,7 @@ const idUrl = getId(url);
       image_versions: items.image_versions2?.candidates ?? null,
       video_versions: items.video_versions ?? null,
       carousel_media: carousel_media
-    }
+    };
 
     // Print json data
     console.log(json_data); 
