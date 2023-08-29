@@ -9,14 +9,18 @@ You can get **information**, **image versions**, **video versions** and **carous
 - Right click and **inspect** or press F12 (Chrome).
     1. Select **Network** tab.
     2. Selec **All** filter.
-    3. Select **timeline/** or **yourusername/** or any of the **graphql** files. You can use the filter field to search for it. If it's empty just refresh the page.
+    3. Select `timeline/` or `yourusername/` or `instagram/` or any of the `graphql` files. You can use the filter field to search for it. If it's empty just refresh the page.
     4. Select **Headers** bar.
     5. Scroll down and look for **Request Headers** tab.
     6. Copy your **Cookie** code.
     7. Copy your **User-Agent** code.
        > User-Agent is included in the code, but I recommend to get your own.
-    9. Copy your **X-Ig-App-Id** code.
+    8. Copy your **X-Ig-App-Id** code.
 
+    ```diff
+    - It will stop working if you log out or switch instagram accounts.
+    ``` 
+    
 ![scraper](https://github.com/ahmedrangel/instagram-media-scraper/assets/50090595/4cc339ea-a314-4696-8fc2-eaa756d4018e)
 
 > Don't share your cookie code with anyone!
