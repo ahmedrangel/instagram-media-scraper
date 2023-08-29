@@ -18,7 +18,7 @@ You can get **information**, **image versions**, **video versions** and **carous
     8. Copy your **X-Ig-App-Id** code.
 
     ```diff
-    - Your cookie will stop working if you log out or switch accounts, you will need to get it again.
+    - Your cookie will expire if you log out or switch accounts, you will need to get it again.
     ``` 
 
 ![scraper](https://github.com/ahmedrangel/instagram-media-scraper/assets/50090595/4cc339ea-a314-4696-8fc2-eaa756d4018e)
