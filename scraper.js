@@ -23,7 +23,7 @@ const idUrl = getId(url);
   if (!idUrl) {
     console.log('Invalid URL');
   } else {
-    const response = await fetch(`https://www.instagram.com/p/${idUrl}?__a=1&__d=di`, {
+    const response = await fetch(`https://www.instagram.com/p/${idUrl}?__a=1&__d=dis`, {
       headers: {
         "cookie": _cookie,
         "user-agent": _userAgent,
