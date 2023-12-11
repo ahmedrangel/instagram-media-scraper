@@ -1,5 +1,5 @@
-# **Instagram Media Scraper Without API (Working November 2023)**
- This is simple Node.js (v18.16+) code to get public **information** and **media** (*images*, *videos*, *carousel*) from every instagram post or reel URL without API. Working in 2023.
+# **Instagram Media Scraper Without API (Working December 2023)**
+ This is simple Node.js (v18.16+) code to get public **information** and **media** (*images*, *videos*, *carousel*) from a specific instagram post or reel URL without API. Working in 2023.
 
 You can get **information**, **image versions**, **video versions** and **carousel media** with their respective image versions and/or video versions of each of them.
 
