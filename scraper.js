@@ -8,7 +8,7 @@ const _xIgAppId = "93661974..."; // required! get your X-Ig-App-Id from your bro
 
 // Function to get instagram post ID from any url string
 const getId = (url) => {
-  const regex = /\/([a-zA-Z0-9_-]+)(?:\.[a-zA-Z0-9]+)?(?:\?|$|\/\?|\/$)/;
+  const regex = /(?:https?:\/\/)?(?:www\.)?instagram\.com\/(?:[^/]+\/)?([^/?]+)/;
   const result = regex.exec(url);
   if (result && result.length > 1) {
     return result[1];
@@ -59,7 +59,7 @@ const idUrl = getId(url);
       caption: items.caption?.text ?? null,
       like_count: items.like_count ?? null,
       comment_count: items.comment_count ?? null,
-      view_count: items.view_count !== undefined ? items.view_count : items.play_count ?? null,
+      view_count: items.view_count ? items.view_count : items.play_count ?? null,
       video_duration: items.video_duration ?? null,
       location: items.location ?? null,
       height: items.original_height ?? null,
