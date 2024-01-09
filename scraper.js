@@ -54,6 +54,7 @@ const getInstagramData = async (url) => {
     view_count: items.view_count ? items.view_count : items.play_count ?? null,
     video_duration: items.video_duration ?? null,
     location: items.location ?? null,
+    height: items.original_height ?? null,
     width: items.original_width ?? null,
     image_versions: items.image_versions2?.candidates ?? null,
     video_versions: items.video_versions ?? null,
