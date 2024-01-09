@@ -1,5 +1,5 @@
-# **Instagram Media Scraper Without API (Working December 2023)**
- This is simple Node.js (v18.16+) code to get public **information** and **media** (*images*, *videos*, *carousel*) from a specific instagram post or reel URL without API. Working in 2023.
+# **Instagram Media Scraper Without API (Working January 2024)**
+ This is simple Node.js (v18.16+) script to get public **information** and **media** (*images*, *videos*, *carousel*) from a specific instagram post or reel URL without API. Working in 2024.
 
 You can get **information**, **image versions**, **video versions** and **carousel media** with their respective image versions and/or video versions of each of them.
 
@@ -12,7 +12,7 @@ You can get **information**, **image versions**, **video versions** and **carous
     3. Select `timeline/` or `yourusername/` or `instagram/` or any of the `graphql` files. You can use the filter field to search for it. If it's empty just refresh the page.
     4. Select **Headers** bar.
     5. Scroll down and look for **Request Headers** tab.
-    6. Copy your **Cookie** code.
+    6. Look for `ds_user_id` and `sessionid` and copy its values from your **Cookies**.
     7. Copy your **User-Agent** code.
        > User-Agent is included in the code, but I recommend to get your own.
     8. Copy your **X-Ig-App-Id** code.
@@ -24,90 +24,80 @@ You can get **information**, **image versions**, **video versions** and **carous
 ![scraper](https://github.com/ahmedrangel/instagram-media-scraper/assets/50090595/4cc339ea-a314-4696-8fc2-eaa756d4018e)
 
 > Don't share your cookie code with anyone!
-- If you get these syntax error mark just put a forward slash after all the back slashes.
-
-![image](https://github.com/ahmedrangel/instagram-media-scraper/assets/50090595/a42bf426-8c89-4099-81e2-1017a1a3e7d8)
-
-![image](https://github.com/ahmedrangel/instagram-media-scraper/assets/50090595/830b1647-31da-41d0-b93a-052590982f0d)
 
 ## Example
 ```js
-// Instgram post or reel URL
-const url = "https://www.instagram.com/reel/CtjoC2BNsB2/?igshid=MzRlODBiNWFlZA==" // url example
-
 // Required headers example
 const _userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"; // Use this one or get your User-Agent from your browser
-const _cookie = `mid=...; ig_did=... datr=...; fbm_...; ds_user_id=...; csrftoken=...; fbsr_=... rur="..."`; // required! get your Cookie from your browser
+const _cookie = "ds_user_id=...; sessionid=...;"; // required! get your Cookie values from your browser
 const _xIgAppId = "93661974..."; // required! get your X-Ig-App-Id from your browser
 
-// Function to get instagram post ID from any url string
+// Function to get instagram post ID from URL string
 const getId = (url) => {
   const regex = /(?:https?:\/\/)?(?:www\.)?instagram\.com\/(?:[^/]+\/)?([^/?]+)/;
   const result = regex.exec(url);
-  if (result && result.length > 1) {
-    return result[1];
-  }
-  return null;
+  return result && result.length > 1 ? result[1] : null;
 };
 
-const idUrl = getId(url);
+// Function to get instagram data from URL string
+const getInstagramData = async (url) => {
+  const igId = getId(url);
+  if (!igId) return "Invalid URL";
+  // Fetch data from instagram post
+  const response = await fetch(`https://www.instagram.com/p/${igId}?__a=1&__d=dis`, {
+    headers: {
+      "cookie": _cookie,
+      "user-agent": _userAgent,
+      "x-ig-app-id": _xIgAppId,
+      ["sec-fetch-site"]: "same-origin"
+    }
+  });
+  const json = await response.json();
+  const items = json.items[0]; // You can return the entire items or create your own JSON object from them
+  
+  // Check if post is a carousel
+  let carousel_media = [];
+  items.product_type === "carousel_container" ? (() => {
+    items.carousel_media.forEach(element => {
+      carousel_media.push({
+        image_versions: element.image_versions2.candidates ?? null,
+        video_versions: element.video_versions ?? null
+      })
+    })
+    return carousel_media;
+  })() : carousel_media = null;
+  
+  // Return custom json object
+  return {
+    code: items.code ?? null,
+    created_at: items.taken_at ?? null,
+    username: items.user.username ?? null,
+    full_name: items.user.full_name ?? null,
+    profile_picture: items.user.profile_pic_url ?? null,
+    is_verified: items.user.is_verified ?? null,
+    is_paid_partnership: items.is_paid_partnership ?? null,
+    product_type: items.product_type ?? null,
+    caption: items.caption?.text ?? null,
+    like_count: items.like_count ?? null,
+    comment_count: items.comment_count ?? null,
+    view_count: items.view_count ? items.view_count : items.play_count ?? null,
+    video_duration: items.video_duration ?? null,
+    location: items.location ?? null,
+    height: items.original_height ?? null,
+    width: items.original_width ?? null,
+    image_versions: items.image_versions2?.candidates ?? null,
+    video_versions: items.video_versions ?? null,
+    carousel_media: carousel_media
+  };
+};
 
 (async() => {
-  // Fetch data from instagram post
-  if (!idUrl) {
-    console.log('Invalid URL');
-  } else {
-    const response = await fetch(`https://www.instagram.com/p/${idUrl}?__a=1&__d=dis`, {
-      headers: {
-        "cookie": _cookie,
-        "user-agent": _userAgent,
-        "x-ig-app-id": _xIgAppId,
-        ["sec-fetch-site"]: "same-origin"
-      }
-    });
-    const json = await response.json();
-    const items = json.items[0];
-
-    // Check if post is a carousel
-    let carousel_media = [];
-    items.product_type === "carousel_container" ? (() => {
-      items.carousel_media.forEach(element => {
-        carousel_media.push({
-          image_versions: element.image_versions2.candidates ?? null,
-          video_versions: element.video_versions ?? null
-        })
-      })
-      return carousel_media;
-    })() : carousel_media = null;
-    
-    // Create json data
-    const json_data = {
-      code: items.code ?? null,
-      created_at: items.taken_at ?? null,
-      username: items.user.username ?? null,
-      full_name: items.user.full_name ?? null,
-      profile_picture: items.user.profile_pic_url ?? null,
-      is_verified: items.user.is_verified ?? null,
-      is_paid_partnership: items.is_paid_partnership ?? null,
-      product_type: items.product_type ?? null,
-      caption: items.caption?.text ?? null,
-      like_count: items.like_count ?? null,
-      comment_count: items.comment_count ?? null,
-      view_count: items.view_count ? items.view_count : items.play_count ?? null,
-      video_duration: items.video_duration ?? null,
-      location: items.location ?? null,
-      height: items.original_height ?? null,
-      width: items.original_width ?? null,
-      image_versions: items.image_versions2?.candidates ?? null,
-      video_versions: items.video_versions ?? null,
-      carousel_media: carousel_media
-    };
-
-    // Print json data
-    console.log(json_data); 
-  }
+  // Get data from instagram post or reel URL string
+  const data = await getInstagramData("https://www.instagram.com/reel/CtjoC2BNsB2");
+  console.log(data);
 })();
 ```
+
 ## Stringified JSON output example
 ```json
 {
