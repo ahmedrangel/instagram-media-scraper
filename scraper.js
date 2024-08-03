@@ -26,7 +26,9 @@ const getInstagramData = async (url) => {
   });
 
   const json = await response.json();
-  const items = json?.items[0]; // You can return the entire items or create your own JSON object from them
+  const items = json?.items[0];
+  // You can return the entire items or create your own JSON object from them
+  // return items;
   
   // Check if post is a carousel
   let carousel_media = [];
