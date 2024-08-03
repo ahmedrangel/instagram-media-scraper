@@ -24,41 +24,41 @@ const getInstagramData = async (url) => {
     }
   });
   const json = await response.json();
-  const items = json.items[0]; // You can return the entire items or create your own JSON object from them
+  const items = json?.items[0]; // You can return the entire items or create your own JSON object from them
   
   // Check if post is a carousel
   let carousel_media = [];
-  items.product_type === "carousel_container" ? (() => {
-    items.carousel_media.forEach(element => {
+  items?.product_type === "carousel_container" ? (() => {
+    for (const el of items?.carousel_media) {
       carousel_media.push({
-        image_versions: element.image_versions2.candidates ?? null,
-        video_versions: element.video_versions ?? null
+        image_versions: el?.image_versions2?.candidates,
+        video_versions: el?.video_versions
       })
-    })
+    }
     return carousel_media;
   })() : carousel_media = null;
   
   // Return custom json object
   return {
-    code: items.code ?? null,
-    created_at: items.taken_at ?? null,
-    username: items.user.username ?? null,
-    full_name: items.user.full_name ?? null,
-    profile_picture: items.user.profile_pic_url ?? null,
-    is_verified: items.user.is_verified ?? null,
-    is_paid_partnership: items.is_paid_partnership ?? null,
-    product_type: items.product_type ?? null,
-    caption: items.caption?.text ?? null,
-    like_count: items.like_count ?? null,
-    comment_count: items.comment_count ?? null,
-    view_count: items.view_count ? items.view_count : items.play_count ?? null,
-    video_duration: items.video_duration ?? null,
-    location: items.location ?? null,
-    height: items.original_height ?? null,
-    width: items.original_width ?? null,
-    image_versions: items.image_versions2?.candidates ?? null,
-    video_versions: items.video_versions ?? null,
-    carousel_media: carousel_media
+    code: items?.code,
+    created_at: items?.taken_at,
+    username: items?.user?.username,
+    full_name: items?.user?.full_name,
+    profile_picture: items?.user?.profile_pic_url,
+    is_verified: items?.user?.is_verified,
+    is_paid_partnership: items?.is_paid_partnership,
+    product_type: items?.product_type,
+    caption: items?.caption?.text,
+    like_count: items?.like_count,
+    comment_count: items?.comment_count,
+    view_count: items?.view_count ? items.view_count : items?.play_count,
+    video_duration: items?.video_duration,
+    location: items?.location,
+    height: items?.original_height,
+    width: items?.original_width,
+    image_versions: items?.image_versions2?.candidates,
+    video_versions: items?.video_versions,
+    carousel_media
   };
 };
 
