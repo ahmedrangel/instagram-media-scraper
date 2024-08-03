@@ -54,7 +54,7 @@ const getInstagramGraphqlData = async (url) => {
     video_duration: items?.video_duration,
     thumbnail_src: items?.thumbnail_src,
     clips_music_attribution_info: items?.clips_music_attribution_info,
-    sidecar: items?.edge_sidecar_to_children.edges,
+    sidecar: items?.edge_sidecar_to_children?.edges,
   }
 };
 
