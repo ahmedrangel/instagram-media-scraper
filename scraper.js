@@ -14,6 +14,7 @@ const getId = (url) => {
 const getInstagramData = async (url) => {
   const igId = getId(url);
   if (!igId) return "Invalid URL";
+
   // Fetch data from instagram post
   const response = await fetch(`https://www.instagram.com/p/${igId}?__a=1&__d=dis`, {
     headers: {
@@ -23,6 +24,7 @@ const getInstagramData = async (url) => {
       ["sec-fetch-site"]: "same-origin"
     }
   });
+
   const json = await response.json();
   const items = json?.items[0]; // You can return the entire items or create your own JSON object from them
   
