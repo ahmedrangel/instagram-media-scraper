@@ -1,8 +1,6 @@
 # **Instagram Media Scraper Without API (Working August 2024)**
  This is simple Node.js (v18.16+) script to get public **information** and **media** (*images*, *videos*, *carousel*) from a specific instagram post or reel URL without API. Working in 2024.
 
-You can get **information**, **image versions**, **video versions** and **carousel media** with their respective image versions and/or video versions of each of them.
-
 ## **How to get your Cookie, User-Agent and X-Ig-App-Id**
 - Login to Instagram
 - Go to your **profile page** or any **instagram page**.
@@ -24,6 +22,10 @@ You can get **information**, **image versions**, **video versions** and **carous
 ![scraper](https://github.com/ahmedrangel/instagram-media-scraper/assets/50090595/4cc339ea-a314-4696-8fc2-eaa756d4018e)
 
 > Don't share your cookie code with anyone!
+
+# Method 1 (Magic Parameters)
+
+You can get **information**, **image versions**, **video versions**, **carousel media** with their respective image versions and/or video versions of each of them, and more.
 
 ## Example
 ```js
@@ -69,7 +71,7 @@ const getInstagramData = async (url) => {
       })
     }
     return carousel_media;
-  })() : carousel_media = null;
+  })() : carousel_media = undefined;
   
   // Return custom json object
   return {
@@ -109,95 +111,169 @@ const getInstagramData = async (url) => {
   "created_at": 1686930107,
   "username": "fatfatpankocat",
   "full_name": "Panko A. Cat",
-  "profile_picture": "https://scontent.cdninstagram.com/v/t51.2885-19/351028002_1390928218140357_6492853570855484928_n.jpg?.............",
+  "profile_picture": "https://instagram.fpac1-4.fna.fbcdn.net/v/t51.2885-19/428584192_1431449027454508_4927424727647346838_n.jpg?...",
   "is_verified": false,
   "is_paid_partnership": false,
   "product_type": "clips",
   "caption": "Processing speeds are at an all time low",
-  "like_count": 50799,
-  "comment_count": 112,
-  "view_count": 357385,
-  "video_duration": 5.293,
-  "location": undefined,
+  "like_count": 72185,
+  "comment_count": 129,
+  "view_count": 371210,
+  "video_duration": 5.166,
   "height": 1024,
   "width": 576,
   "image_versions": [
     {
-      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
+      "width": 576,
       "height": 1024,
-      "width": 576
+      "url": "https://instagram.fpac1-4.fna.fbcdn.net/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?..."
     },
-    {
-      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
-      "height": 853,
-      "width": 480
-    },
-    {
-      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
-      "height": 569,
-      "width": 320
-    },
-    {
-      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
-      "height": 427,
-      "width": 240
-    },
-    {
-      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
-      "height": 1080,
-      "width": 1080
-    },
-    {
-      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
-      "height": 750,
-      "width": 750
-    },
-    {
-      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
-      "height": 640,
-      "width": 640
-    },
-    {
-      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
-      "height": 480,
-      "width": 480
-    },
-    {
-      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
-      "height": 320,
-      "width": 320
-    },
-    {
-      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
-      "height": 240,
-      "width": 240
-    },
-    {
-      "url": "https://scontent.cdninstagram.com/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?.............",
-      "height": 150,
-      "width": 150
-    }
+    ...
   ],
   "video_versions": [
     {
-      "width": 576,
       "height": 1024,
-      "url": "https://scontent.cdninstagram.com/o1/v/t16/f1/m82/F5462086DC54DD10E6E0AC3C9902A2A3_video_dashinit.mp4?.............",
-      "type": 101
+      "id": "1363008590946442v",
+      "type": 101,
+      "url": "https://scontent.cdninstagram.com/o1/v/t16/f1/m82/F5462086DC54DD10E6E0AC3C9902A2A3_video_dashinit.mp4?...",
+      "width": 576
     },
-    {
-      "width": 432,
-      "height": 768,
-      "url": "https://scontent.cdninstagram.com/o1/v/t16/f1/m82/5542D63645ABB4B44E5B31785E6A6181_video_dashinit.mp4?.............",
-      "type": 102
-    },
-    {
-      "width": 432,
-      "height": 768,
-      "url": "https://scontent.cdninstagram.com/o1/v/t16/f1/m82/5542D63645ABB4B44E5B31785E6A6181_video_dashinit.mp4?.............",
-      "type": 103
+    ...
+  ]
+}
+```
+
+# Method 2 (GraphQL)
+
+You can get **information**, **thumbnail src**, **video url**, **carousel media** **sidecar (carousel media)** and more.
+
+## Example
+```js
+// Required headers example
+const _userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"; // Use this one or get your User-Agent from your browser
+const _cookie = "ds_user_id=...; sessionid=...;"; // required! get your Cookie values from your browser
+const _xIgAppId = "93661974..."; // required! get your X-Ig-App-Id from your browser
+
+// Function to get instagram post ID from URL string
+const getId = (url) => {
+  const regex = /instagram.com\/(?:[A-Za-z0-9_.]+\/)?(p|reels|reel|stories)\/([A-Za-z0-9-_]+)/;
+  const match = url.match(regex);
+  return match && match[2] ? match[2] : null;
+};
+
+// Function to get instagram data from URL string
+const getInstagramGraphqlData = async (url) => {
+  const igId = getId(url);
+  if (!igId) return "Invalid URL";
+
+  // Fetch graphql data from instagram post
+  const graphql = new URL("https://www.instagram.com/graphql/query");
+  graphql.searchParams.set("query_hash", "9f8827793ef34641b2fb195d4d41151c");
+  graphql.searchParams.set("variables", JSON.stringify({ shortcode: igId }));
+
+  const response = await fetch(graphql, {
+    headers: {
+      "cookie": _cookie,
+      "user-agent": _userAgent,
+      "x-ig-app-id": _xIgAppId,
+      ["sec-fetch-site"]: "same-origin"
     }
+  });
+
+  const json = await response.json();
+  const items = json?.data?.shortcode_media; 
+  // You can return the entire items or create your own JSON object from them
+  // return items;
+
+  // Return custom json object
+  return {
+    __typename: items?.__typename,
+    shortcode: items?.shortcode,
+    dimensions: items?.dimensions,
+    display_url: items?.display_url,
+    display_resources: items?.display_resources,
+    has_audio: items?.has_audio,
+    video_url: items?.video_url,
+    video_view_count: items?.video_view_count,
+    video_play_count: items?.video_play_count,
+    is_video: items?.is_video,
+    caption: items?.edge_media_to_caption?.edges[0]?.node?.text,
+    is_paid_partnership: items?.is_paid_partnership,
+    location: items?.location,
+    owner: items?.owner,
+    product_type: items?.product_type,
+    video_duration: items?.video_duration,
+    thumbnail_src: items?.thumbnail_src,
+    clips_music_attribution_info: items?.clips_music_attribution_info,
+    sidecar: items?.edge_sidecar_to_children?.edges,
+  }
+};
+
+(async() => {
+  // Get data from instagram post or reel URL string
+  const data = await getInstagramGraphqlData("https://www.instagram.com/reel/CtjoC2BNsB2");
+  console.log(data);
+})();
+```
+
+## Stringified JSON output example
+```json
+{
+  "__typename": "GraphVideo",
+  "shortcode": "CtjoC2BNsB2",
+  "dimensions": {
+    "height": 1137,
+    "width": 640
+  },
+  "display_url": "https://instagram.fpac1-4.fna.fbcdn.net/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?...",
+  "display_resources": [
+    {
+      "src": "https://instagram.fpac1-4.fna.fbcdn.net/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?...",
+      "config_width": 640,
+      "config_height": 1137
+    },
+    ...
   ],
-  "carousel_media": null
+  "has_audio": true,
+  "video_url": "https://instagram.fpac1-2.fna.fbcdn.net/o1/v/t16/f1/m82/F5462086DC54DD10E6E0AC3C9902A2A3_video_dashinit.mp4?...",
+  "video_view_count": 127096,
+  "video_play_count": 371210,
+  "is_video": true,
+  "caption": "Processing speeds are at an all time low",
+  "is_paid_partnership": false,
+  "location": null,
+  "owner": {
+    "id": "39625136655",
+    "is_verified": false,
+    "profile_pic_url": "https://instagram.fpac1-4.fna.fbcdn.net/v/t51.2885-19/428584192_1431449027454508_4927424727647346838_n.jpg?...",
+    "username": "fatfatpankocat",
+    "blocked_by_viewer": false,
+    "restricted_by_viewer": false,
+    "followed_by_viewer": false,
+    "full_name": "Panko A. Cat",
+    "has_blocked_viewer": false,
+    "is_embeds_disabled": false,
+    "is_private": false,
+    "is_unpublished": false,
+    "requested_by_viewer": false,
+    "pass_tiering_recommendation": true,
+    "edge_owner_to_timeline_media": {
+      "count": 1423
+    },
+    "edge_followed_by": {
+      "count": 508145
+    }
+  },
+  "product_type": "clips",
+  "video_duration": 5.166,
+  "thumbnail_src": "https://instagram.fpac1-4.fna.fbcdn.net/v/t51.2885-15/354801788_1023848012117396_6220977847781610270_n.jpg?...",
+  "clips_music_attribution_info": {
+    "artist_name": "0lukasaa",
+    "song_name": "Original audio",
+    "uses_original_audio": true,
+    "should_mute_audio": false,
+    "should_mute_audio_reason": "",
+    "audio_id": "508221254754075"
+  }
 }
 ```
