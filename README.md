@@ -25,6 +25,8 @@
 
 # Method 1 (Magic Parameters)
 
+Using "Magic Parameters" `?__a=1&__d=dis`.
+
 You can get **information**, **image versions**, **video versions**, **carousel media** with their respective image versions and/or video versions of each of them, and more.
 
 ## Example
@@ -144,6 +146,8 @@ const getInstagramData = async (url) => {
 ```
 
 # Method 2 (GraphQL)
+
+Using graphql `query_hash` `9f8827793ef34641b2fb195d4d41151c`.
 
 You can get **information**, **thumbnail src**, **video url**, **carousel media** **sidecar (carousel media)** and more.
 
