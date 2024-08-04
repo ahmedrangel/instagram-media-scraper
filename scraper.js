@@ -40,7 +40,7 @@ const getInstagramData = async (url) => {
       })
     }
     return carousel_media;
-  })() : carousel_media = null;
+  })() : carousel_media = undefined;
   
   // Return custom json object
   return {
