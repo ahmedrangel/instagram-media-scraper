@@ -1,7 +1,16 @@
 # **Instagram Media Scraper Without API (Working August 2024)**
  This is simple Node.js (v18.16+) script to get public **information** and **media** (*images*, *videos*, *carousel*) from a specific instagram post or reel URL without API. Working in 2024.
 
-## **How to get your Cookie, User-Agent and X-Ig-App-Id**
+# Table of Content
+- [How to get your Cookie, User-Agent and X-Ig-App-Id headers](#how-to-get-your-cookie-user-agent-and-x-ig-app-id-headers)
+- [Method 1 (Magic Parameters)](#method-1-magic-parameters)
+  - [Code example](#code-example)
+  - [Output example](#stringified-json-output-example)
+- [Method 2 (GraphQL)](#method-2-graphql)
+  - [Code example](#code-example-1)
+  - [Output example](#stringified-json-output-example-1)
+
+## **How to get your Cookie, User-Agent and X-Ig-App-Id headers**
 - Login to Instagram
 - Go to your **profile page** or any **instagram page**.
 - Right click and **inspect** or press F12 (Chrome).
@@ -29,7 +38,7 @@ Using "Magic Parameters" `?__a=1&__d=dis`.
 
 You can get **information**, **image versions**, **video versions**, **carousel media** with their respective image versions and/or video versions of each of them, and more.
 
-## Example
+## Code example
 ```js
 // Required headers example
 const _userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"; // Use this one or get your User-Agent from your browser
@@ -151,7 +160,7 @@ Using graphql `query_hash` `9f8827793ef34641b2fb195d4d41151c`.
 
 You can get **information**, **thumbnail src**, **video url**, **carousel media** **sidecar (carousel media)** and more.
 
-## Example
+## Code example
 ```js
 // Required headers example
 const _userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"; // Use this one or get your User-Agent from your browser
