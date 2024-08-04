@@ -3,12 +3,13 @@
 
 # Table of Content
 - [How to get your Cookie, User-Agent and X-Ig-App-Id headers](#how-to-get-your-cookie-user-agent-and-x-ig-app-id-headers)
-- [Method 1 (Magic Parameters)](#method-1-magic-parameters)
+- [Method 1: Magic Parameters](#method-1-magic-parameters)
   - [Code example](#code-example)
   - [Output example](#stringified-json-output-example)
-- [Method 2 (GraphQL)](#method-2-graphql)
+- [Method 2: GraphQL](#method-2-graphql)
   - [Code example](#code-example-1)
   - [Output example](#stringified-json-output-example-1)
+- [Method 3: Puppeteer (Advanced)](#method-3-puppeteer-advanced)
 
 ## **How to get your Cookie, User-Agent and X-Ig-App-Id headers**
 - Login to Instagram
@@ -32,7 +33,7 @@
 
 > Don't share your cookie code with anyone!
 
-# Method 1 (Magic Parameters)
+# Method 1: Magic Parameters
 
 Using "Magic Parameters" `?__a=1&__d=dis`.
 
@@ -154,7 +155,7 @@ const getInstagramData = async (url) => {
 }
 ```
 
-# Method 2 (GraphQL)
+# Method 2: GraphQL
 
 Using graphql `query_hash` `9f8827793ef34641b2fb195d4d41151c`.
 
@@ -290,3 +291,9 @@ const getInstagramGraphqlData = async (url) => {
   }
 }
 ```
+
+# Method 3: Puppeteer (Advanced)
+
+This method starts a server for scraping instagram post and reel medias using puppeteer and itty-router. It automatically handles Instagram Login and provide a route for fetching the data.
+
+- Repo: [Instagram Puppeteer Media Scraper](https://github.com/ahmedrangel/instagram-puppeteer-media-scraper)
