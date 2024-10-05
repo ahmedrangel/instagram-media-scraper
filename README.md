@@ -1,4 +1,4 @@
-# **Instagram Media Scraper Without API (Working August 2024)**
+# **Instagram Media Scraper Without API (Working October 2024)**
  This is simple Node.js (v18.16+) script to get public **information** and **media** (*images*, *videos*, *carousel*) from a specific instagram post or reel URL without API. Working in 2024.
 
 # Table of Content
@@ -6,7 +6,7 @@
 - [Method 1: Magic Parameters](#method-1-magic-parameters)
   - [Code example](#code-example)
   - [Output example](#stringified-json-output-example)
-- [Method 2: GraphQL](#method-2-graphql)
+- [Method 2: GraphQL (No Cookie Needed)](#method-2-graphql)
   - [Code example](#code-example-1)
   - [Output example](#stringified-json-output-example-1)
 - [Method 3: Puppeteer (Advanced)](#method-3-puppeteer-advanced)
@@ -61,10 +61,10 @@ const getInstagramData = async (url) => {
   // Fetch data from instagram post
   const response = await fetch(`https://www.instagram.com/p/${igId}?__a=1&__d=dis`, {
     headers: {
-      "cookie": _cookie,
-      "user-agent": _userAgent,
-      "x-ig-app-id": _xIgAppId,
-      ["sec-fetch-site"]: "same-origin"
+      "Cookie": _cookie,
+      "User-Agent": _userAgent,
+      "X-IG-App-ID": _xIgAppId,
+      "Sec-Fetch-Site": "same-origin"
     }
   });
 
@@ -155,9 +155,9 @@ const getInstagramData = async (url) => {
 }
 ```
 
-# Method 2: GraphQL
+# Method 2: GraphQL (No Cookie Needed)
 
-Using graphql `query_hash` `9f8827793ef34641b2fb195d4d41151c`.
+Using graphql private API.
 
 You can get **information**, **thumbnail src**, **video url**, **carousel media** **sidecar (carousel media)** and more.
 
@@ -165,7 +165,6 @@ You can get **information**, **thumbnail src**, **video url**, **carousel media*
 ```js
 // Required headers example
 const _userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"; // Use this one or get your User-Agent from your browser
-const _cookie = "ds_user_id=...; sessionid=...;"; // required! get your Cookie values from your browser
 const _xIgAppId = "93661974..."; // required! get your X-Ig-App-Id from your browser
 
 // Function to get instagram post ID from URL string
@@ -181,21 +180,25 @@ const getInstagramGraphqlData = async (url) => {
   if (!igId) return "Invalid URL";
 
   // Fetch graphql data from instagram post
-  const graphql = new URL("https://www.instagram.com/graphql/query");
-  graphql.searchParams.set("query_hash", "9f8827793ef34641b2fb195d4d41151c");
+  const graphql = new URL(`https://www.instagram.com/api/graphql`);
   graphql.searchParams.set("variables", JSON.stringify({ shortcode: igId }));
+  graphql.searchParams.set("doc_id", "10015901848480474");
+  graphql.searchParams.set("lsd", "AVqbxe3J_YA"); 
 
   const response = await fetch(graphql, {
+    method: "POST",
     headers: {
-      "cookie": _cookie,
-      "user-agent": _userAgent,
-      "x-ig-app-id": _xIgAppId,
-      ["sec-fetch-site"]: "same-origin"
+      "User-Agent": _userAgent,
+      "Content-Type": "application/x-www-form-urlencoded",
+      "X-IG-App-ID": _xIgAppId,
+      "X-FB-LSD": "AVqbxe3J_YA",
+      "X-ASBD-ID": "129477",
+      "Sec-Fetch-Site": "same-origin"
     }
   });
 
   const json = await response.json();
-  const items = json?.data?.shortcode_media; 
+  const items = json?.data?.xdt_shortcode_media; 
   // You can return the entire items or create your own JSON object from them
   // return items;
 
