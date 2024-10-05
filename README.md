@@ -6,7 +6,7 @@
 - [Method 1: Magic Parameters](#method-1-magic-parameters)
   - [Code example](#code-example)
   - [Output example](#stringified-json-output-example)
-- [Method 2: GraphQL (No Cookie Needed)](#method-2-graphql)
+- [Method 2: GraphQL (No Cookie Needed)](#method-2-graphql-no-cookie-needed)
   - [Code example](#code-example-1)
   - [Output example](#stringified-json-output-example-1)
 - [Method 3: Puppeteer (Advanced)](#method-3-puppeteer-advanced)
