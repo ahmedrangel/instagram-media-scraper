@@ -18,10 +18,10 @@ const getInstagramData = async (url) => {
   // Fetch data from instagram post
   const response = await fetch(`https://www.instagram.com/p/${igId}?__a=1&__d=dis`, {
     headers: {
-      "cookie": _cookie,
-      "user-agent": _userAgent,
-      "x-ig-app-id": _xIgAppId,
-      ["sec-fetch-site"]: "same-origin"
+      "Cookie": _cookie,
+      "User-Agent": _userAgent,
+      "X-IG-App-ID": _xIgAppId,
+      "Sec-Fetch-Site": "same-origin"
     }
   });
 
