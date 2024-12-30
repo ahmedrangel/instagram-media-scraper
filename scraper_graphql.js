@@ -1,6 +1,13 @@
-// Required headers example
-const _userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"; // Use this one or get your User-Agent from your browser
-const _xIgAppId = "93661974..."; // required! get your X-Ig-App-Id from your browser
+// Load from ENV
+require('dotenv').config()
+
+const _userAgent = process.env.USER_AGENT;
+const _xIgAppId = process.env.X_IG_APP_ID;
+
+if (!_userAgent || !_xIgAppId) {
+  console.error("Required headers not found in ENV");
+  process.exit(1);
+}
 
 // Function to get instagram post ID from URL string
 const getId = (url) => {
@@ -63,6 +70,6 @@ const getInstagramGraphqlData = async (url) => {
 
 (async() => {
   // Get data from instagram post or reel URL string
-  const data = await getInstagramGraphqlData("https://www.instagram.com/reel/CtjoC2BNsB2");
+  const data = await getInstagramGraphqlData("https://www.instagram.com/p/DEAnkGmvuxn");
   console.log(data);
 })();
