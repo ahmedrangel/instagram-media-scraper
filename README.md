@@ -1,4 +1,4 @@
-# **Instagram Media Scraper Without API (Working October 2024)**
+# **Instagram Media Scraper Without API (Working December 2024)**
  This is simple Node.js (v18.16+) script to get public **information** and **media** (*images*, *videos*, *carousel*) from a specific instagram post or reel URL without API. Working in 2024.
 
 # Table of Content
@@ -33,6 +33,17 @@
 
 > Don't share your cookie code with anyone!
 
++ rename `.env.example` to `.env`
++ enter the credentials
+```bash
+# required! Use this one or get your User-Agent from your browser
+USER_AGENT=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36
+# only required for magic parameters! get your Cookie values from your browser
+COOKIE=
+# required!  get your X-Ig-App-Id from your browser
+X_IG_APP_ID=
+```
+
 # Method 1: Magic Parameters
 
 Using "Magic Parameters" `?__a=1&__d=dis`.
@@ -41,10 +52,18 @@ You can get **information**, **image versions**, **video versions**, **carousel 
 
 ## Code example
 ```js
-// Required headers example
-const _userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"; // Use this one or get your User-Agent from your browser
-const _cookie = "ds_user_id=...; sessionid=...;"; // required! get your Cookie values from your browser
-const _xIgAppId = "93661974..."; // required! get your X-Ig-App-Id from your browser
+
+// Load from ENV
+require('dotenv').config()
+
+const _userAgent = process.env.USER_AGENT;
+const _cookie = process.env.COOKIE;
+const _xIgAppId = process.env.X_IG_APP_ID;
+
+if (!_userAgent || !_cookie || !_xIgAppId) {
+  console.error("Required headers not found in ENV");
+  process.exit(1);
+}
 
 // Function to get instagram post ID from URL string
 const getId = (url) => {
@@ -163,9 +182,16 @@ You can get **information**, **thumbnail src**, **video url**, **carousel media*
 
 ## Code example
 ```js
-// Required headers example
-const _userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"; // Use this one or get your User-Agent from your browser
-const _xIgAppId = "93661974..."; // required! get your X-Ig-App-Id from your browser
+// Load from ENV
+require('dotenv').config()
+
+const _userAgent = process.env.USER_AGENT;
+const _xIgAppId = process.env.X_IG_APP_ID;
+
+if (!_userAgent || !_xIgAppId) {
+  console.error("Required headers not found in ENV");
+  process.exit(1);
+}
 
 // Function to get instagram post ID from URL string
 const getId = (url) => {
