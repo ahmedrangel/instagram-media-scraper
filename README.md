@@ -6,7 +6,7 @@
 - [Method 1: Magic Parameters](#method-1-magic-parameters)
   - [Code example](#code-example)
   - [Output example](#stringified-json-output-example)
-- [Method 2: GraphQL (No Cookie Needed)](#method-2-graphql-no-cookie-needed)
+- [Method 2: GraphQL (No Cookie Needed) (Current Best Method)](#method-2-graphql-no-cookie-needed)
   - [Code example](#code-example-1)
   - [Output example](#stringified-json-output-example-1)
 
@@ -44,6 +44,10 @@ X_IG_APP_ID=
 ```
 
 # Method 1: Magic Parameters
+
+```diff
+- As this method uses cookies, it may lead to your account being restricted if it is detected as a bot. Use at your own risk.
+``` 
 
 Using "Magic Parameters" `?__a=1&__d=dis`.
 
