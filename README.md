@@ -1,5 +1,5 @@
-# **Instagram Media Scraper Without API (Working December 2024)**
- This is simple Node.js (v20.12+) script to get public **information** and **media** (*images*, *videos*, *carousel*) from a specific instagram post or reel URL without API. Working in 2024.
+# **Instagram Media Scraper Without API (Working January 2025)**
+ This is simple Node.js (v20.12+) script to get public **information** and **media** (*images*, *videos*, *carousel*) from a specific instagram post or reel URL without API. Working in 2025.
 
 # Table of Content
 - [How to get your Cookie, User-Agent and X-Ig-App-Id headers](#how-to-get-your-cookie-user-agent-and-x-ig-app-id-headers)
