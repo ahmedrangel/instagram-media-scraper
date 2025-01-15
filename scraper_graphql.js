@@ -70,6 +70,6 @@ const getInstagramGraphqlData = async (url) => {
 
 (async() => {
   // Get data from instagram post or reel URL string
-  const data = await getInstagramGraphqlData("https://www.instagram.com/reel/CtjoC2BNsB");
+  const data = await getInstagramGraphqlData("https://www.instagram.com/reel/CtjoC2BNsB2");
   console.log(data);
 })();
