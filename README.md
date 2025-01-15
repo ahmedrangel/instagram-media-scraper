@@ -1,5 +1,5 @@
 # **Instagram Media Scraper Without API (Working December 2024)**
- This is simple Node.js (v18.16+) script to get public **information** and **media** (*images*, *videos*, *carousel*) from a specific instagram post or reel URL without API. Working in 2024.
+ This is simple Node.js (v20.12+) script to get public **information** and **media** (*images*, *videos*, *carousel*) from a specific instagram post or reel URL without API. Working in 2024.
 
 # Table of Content
 - [How to get your Cookie, User-Agent and X-Ig-App-Id headers](#how-to-get-your-cookie-user-agent-and-x-ig-app-id-headers)
@@ -54,7 +54,7 @@ You can get **information**, **image versions**, **video versions**, **carousel 
 ```js
 
 // Load from ENV
-require('dotenv').config()
+process.loadEnvFile();
 
 const _userAgent = process.env.USER_AGENT;
 const _cookie = process.env.COOKIE;
@@ -183,7 +183,7 @@ You can get **information**, **thumbnail src**, **video url**, **carousel media*
 ## Code example
 ```js
 // Load from ENV
-require('dotenv').config()
+process.loadEnvFile();
 
 const _userAgent = process.env.USER_AGENT;
 const _xIgAppId = process.env.X_IG_APP_ID;
