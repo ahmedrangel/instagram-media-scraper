@@ -9,7 +9,6 @@
 - [Method 2: GraphQL (No Cookie Needed)](#method-2-graphql-no-cookie-needed)
   - [Code example](#code-example-1)
   - [Output example](#stringified-json-output-example-1)
-- [Method 3: Puppeteer (Slow)](#method-3-puppeteer-slow)
 
 ## **How to get your Cookie, User-Agent and X-Ig-App-Id headers**
 - Login to Instagram
@@ -320,9 +319,3 @@ const getInstagramGraphqlData = async (url) => {
   }
 }
 ```
-
-# Method 3: Puppeteer (Slow)
-
-This method starts a server for scraping instagram post and reel medias using puppeteer and itty-router. It automatically handles Instagram Login and provide routes for fetching the data.
-
-- Repo: [Instagram Puppeteer Media Scraper](https://github.com/ahmedrangel/instagram-puppeteer-media-scraper)
